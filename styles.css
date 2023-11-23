@@ -9,26 +9,133 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #955a1f;
+    overflow: hidden;
+}
+
+label, header h1 {
+    color: #F3B700;
 }
 
 header {
     display: grid;
+    grid-auto-flow: column;
+    ;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding: 20px;
-   
+
 }
 
 .container {
     flex: 1 1 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-    border: 1px solid #7c3e1c;
-    gap: 10px;    
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
     margin: 0px 10px 10px 10px;
 }
+
 .shelf {
     background-color: #450000;
     display: flex;
+    padding: 2px;
+    border: 1px solid #7c3e1c;
+    justify-content: start;
+    align-items: end;
+    gap: 2px;
+}
+
+.book {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+
+.book h1 {
+    font-size: 0.8rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    hyphens: auto;
+    margin: 20px 0 20px 0;
+}
+
+.book h2 {
+    font-size: 0.6em;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    hyphens: auto;
+}
+
+legend {
+    font-size: 24px;
+    color: #F3B700;
+    
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    /* padding: 20px 40px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: #955a1f;
+}
+
+form,
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+}
+
+form {
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.wrapper.check {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+}
+
+label {
+    align-self: start;
+}
+
+input {
+    padding: 5px 7.5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #F4F4F4;
+}
+
+button {
+    padding: 12.5px 30px;
+    border-radius: 20px;
+    background-color: #450000;
+    color: #F4F4F4;
+    border: none;
+}
+
+span {
+   align-self: end;
+   margin-top: 15px;
+   margin-right: 15px;
+   color: #F3B700;
 }
