@@ -3,29 +3,46 @@
     padding: 0;
 }
 
+:root {
+    --MainFont: 'Old Standard TT', serif;
+    --SecondaryFont: 'Heebo', sans-serif;
+
+    --MainColor: #955a1f;
+    --SecondaryColor: #450000;
+    --White: #F4F4F4;
+    --AccentColor: #F3B700;
+}
+
 body {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #955a1f;
+    background-color: var(--MainColor);
     overflow: hidden;
 }
 
 label, header h1 {
-    color: #F3B700;
+    color: var(--AccentColor);
 }
 
 header {
     display: grid;
     grid-auto-flow: column;
-    padding: 20px;
-    align-content: center;
-    justify-content: space-around;
+    padding: 20px 20px 10px 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header h1 {
     width: 60%;
+    letter-spacing: 4px;
+    font-size: 3rem;
+    font-family: var(--MainFont);
+    font-style: italic;
+    justify-self: center;
+    align-items: center;
+    
 }
 
 
@@ -39,7 +56,7 @@ header h1 {
 }
 
 .shelf {
-    background-color: #450000;
+    background-color: var(--SecondaryColor);
     overflow: hidden;
     display: flex;
     padding: 2px;
@@ -56,7 +73,7 @@ header h1 {
 }
 
 .book h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     height: 80%;
     display: flex;
     justify-content: center;
@@ -64,21 +81,26 @@ header h1 {
     text-align: center;
     hyphens: auto;
     margin: 20px 0 20px 0;
+    font-family: var(--MainFont);
+    font-style: italic;
 }
 
 .book h2 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     hyphens: auto;
+    font-family: var(--SecondaryFont);
 }
 
 legend {
     font-size: 24px;
-    color: #F3B700;
+    color: var(--AccentColor);
+    font-family: var(--MainFont);
+    font-style: italic;
     
 }
 
@@ -86,7 +108,7 @@ legend {
     display: flex !important;
 }
 
-span:hover {
+span:hover, button:hover {
     cursor: pointer;
 }
 
@@ -103,8 +125,12 @@ span:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    background-color: #955a1f;
+    background-color: var(--MainColor);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+label {
+    font-family: var(--SecondaryFont);
 }
 
 form,
@@ -137,22 +163,46 @@ input {
     padding: 5px 7.5px;
     border-radius: 10px;
     border: none;
-    background-color: #F4F4F4;
+    background-color: var(--White);
+}
+
+input:focus {
+    outline-color: var(--AccentColor);
 }
 
 button {
     padding: 12.5px 30px;
     border-radius: 20px;
-    background-color: #450000;
-    color: #F4F4F4;
+    color: var(--AccentColor);
+    background-color: var(--SecondaryColor);
+    /* color: var(--White); */
     border: none;
+    font-family: var(--SecondaryFont);
 }
 
-span {
+button.add {
+    margin: 12.5px 30px;
+}
+
+
+span.exit {
    align-self: end;
    margin-top: 15px;
    margin-right: 15px;
-   color: #F3B700;
+   color: var(--AccentColor);
+}
+
+span.remove {
+    align-self: end;
+    margin-top: 7.5px;
+    margin-right: 7.5px;
+    color: var(--AccentColor);
+ }
+
+
+
+#invisible-button {
+   visibility: hidden;
 }
 
 
