@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+
 function Book(name, author, pages, read) {
     this.name = name;
     this.author = author;
@@ -25,6 +26,12 @@ function createBook(Book)
     newBook.style.height = (Math.random() * 35) + 60 + '%';
 
     newBook.style.backgroundColor = 'rgba(' + red + ", " + green + ", " + blue +  ", 0.8)";
+
+    const removeBook = document.createElement("span");
+    removeBook.classList.add("material-symbols-outlined");
+    removeBook.classList.add("remove");
+    removeBook.textContent = "close";
+
     const title = document.createElement('h1');
     title.classList.add("hyphens");
     title.setAttribute('lang', "de");
@@ -36,6 +43,7 @@ function createBook(Book)
     title.textContent = Book.name;
     writer.textContent = Book.author;
 
+    newBook.appendChild(removeBook);
     newBook.appendChild(title);
     newBook.appendChild(writer);
 
@@ -43,28 +51,37 @@ function createBook(Book)
     shelf.appendChild(newBook);
 }
 
-const book1 = new Book("1984", "George Orwell", 255);
+const modal = document.querySelector(".modal");
+const addButton = document.querySelector(".add");
+const exit = document.querySelector(".exit");
 
-addToLibrary(book1);
-
-// const book2 = new Book("To Kill a Mockingbird", "Harper Lee", 255);
-
-
-// createBook(book1);
-// createBook(book2);
-
-/*
-Functions:
-Modal Popup which allows for book addition
-Book hover shows a delete button on hover
-Adds book to flex container
-    Width based on pages
-    Check if flexbox container is full or not
-
-*/
-
-
-myLibrary.forEach(book => {
-    createBook(book);
+addButton.addEventListener('click', function() {
+    modal.classList.add("active");
 })
+
+exit.addEventListener("click", function() {
+    modal.classList.remove("active");
+})
+
+const form = document.querySelector("form");
+const inputs = document.querySelectorAll("input");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const book = new Book(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+    addToLibrary(book);
+    createBook(book);    
+});
+
+document.addEventListener("click", function(e) {
+    let element = e.target;
+    if(element.classList.contains("remove"))
+    {
+        const removeButtons = document.querySelectorAll(".remove");
+        const removeArray = Array.from(removeButtons);
+        myLibrary.splice(removeArray.indexOf(element), 1);
+        element.parentNode.parentNode.removeChild(element.parentNode);
+    }
+})
+
 
